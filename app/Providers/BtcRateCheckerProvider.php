@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\api\v1\btc\BtcRateController;
-use App\Http\Interfaces\BtcRateChecker as BtcRateInterface;
 use Illuminate\Support\ServiceProvider;
 
 class BtcRateCheckerProvider extends ServiceProvider
@@ -15,7 +13,7 @@ class BtcRateCheckerProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(BtcRateInterface::class, BtcRateController::class);
+        $this->app->bind(\App\Interfaces\BtcRate::class, \App\Services\BtcRateChecker::class);
     }
 
     /**
